@@ -9,7 +9,7 @@ class UserModel extends Model
     protected $table = 'user'; // Change this if needed
     protected $primaryKey = 'id_user';
     
-    protected $allowedFields = ['name', 'date_birth', 'adresse']; // User table fields
+    protected $allowedFields = ['name', 'date_birth', 'Email','adresse']; // User table fields
 
     public function getUserByEmail($email)
     {

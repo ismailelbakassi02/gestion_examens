@@ -56,7 +56,7 @@ class AuthController extends Controller
             $session->setFlashdata('error', 'User not found');
         }
     
-        return redirect()->to('/login');
+        return redirect()->to(base_url('login'));
     }
 
     public function store()
@@ -68,6 +68,7 @@ class AuthController extends Controller
         $userData = [
             'name' => $this->request->getVar('name'),
             'date_birth' => $this->request->getVar('date_birth'),
+            'Email' => $this->request->getVar('email'),
             'adresse' => $this->request->getVar('adresse'),
         ];
     
@@ -78,21 +79,24 @@ class AuthController extends Controller
         // Prepare account data without password hashing
         $accountData = [
             'id_user' => $userId,
-            'email' => $this->request->getVar('email'),
-            'password' => $this->request->getVar('password'), // No hashing
-            'id_role' => null,
+            'username' => $this->request->getVar('name'),
+            'password' => $this->request->getVar('password'),
+            'id_role' => "2",
         ];
     
         // Insert account data into account table
         if (!$accountModel->insert($accountData)) {
             log_message('error', 'Account not inserted: ' . json_encode($accountModel->errors()));
         }
+
+        return redirect()->to(base_url('login'));
+
     }
     public function dashboard()
     {
         $session = session();
         if (!$session->get('isLoggedIn')) {
-            return redirect()->to('/login'); // Redirect if not logged in
+            return redirect()->to(base_url('login')); // Redirect if not logged in
         }
 
         // Pass user data to the dashboard view
@@ -109,6 +113,6 @@ class AuthController extends Controller
     {
         $session = session();
         $session->destroy();
-        return redirect()->to('/login');
+        return redirect()->to(base_url('login'));
     }
 }

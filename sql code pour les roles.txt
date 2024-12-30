@@ -1,0 +1,5 @@
+INSERT INTO role (id_role, nom, description) 
+VALUES
+    (1, 'Admin', 'Role with full access to the system'),
+    (2, 'User', 'Role with limited access to the system'),
+    (3, 'Guest', 'Role with view-only access to the system');

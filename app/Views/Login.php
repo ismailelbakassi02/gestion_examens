@@ -15,8 +15,8 @@
     </a>
     <div align="center">
         <form action="<?= base_url('login/authenticate') ?>" method="POST">
-            <strong>Email</strong>
-            <input type="text" name="text" class="champ" size="25" required placeholder="Email">
+            <strong>Username</strong>
+            <input type="text" name="text" class="champ" size="25" required placeholder="Username">
             <strong>Mot de passe</strong>
             <input type="password" name="password" class="champ" size="25" required placeholder="Mot de passe">
             <input type="submit" name="bouton" value="Connexion" class="bouton">

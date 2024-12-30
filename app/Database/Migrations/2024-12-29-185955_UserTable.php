@@ -25,6 +25,15 @@ class UserTable extends Migration
                 'type'       => 'DATE',
                 'null'       => false,
             ],
+<<<<<<< HEAD
+=======
+            'email' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'default'    => '0',
+                'null'       => false,
+            ],
+>>>>>>> views
             'adresse' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,

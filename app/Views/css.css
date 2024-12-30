@@ -1,0 +1,78 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+a.first {
+    text-decoration: none;
+    color: #3498db;
+    margin: 20px;
+    display: inline-block;
+}
+
+button {
+    background-color: #5dbea3;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button svg {
+    fill: #fff;
+    margin-right: 5px;
+}
+
+button span {
+    vertical-align: middle;
+}
+
+div {
+    text-align: center;
+    margin: 20px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px; /* Adjusted border-radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    border: 2px solid #5dbea3; /* Added border styling */
+}
+
+strong {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.champ {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 15px; /* Adjusted border-radius */
+    border: 1px solid #ccc; /* Added border styling */
+}
+
+.bouton {
+    background-color: #5dbea3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.bouton:hover,
+button:hover {
+    background-color: #ea7f5e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

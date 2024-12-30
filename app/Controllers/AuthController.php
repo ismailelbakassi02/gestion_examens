@@ -31,8 +31,8 @@ class AuthController extends Controller
         $account = $accountModel->getAccountByEmail($email);
     
         if ($account) {
-            // Check plaintext password match
-            if ($account['password'] === $password) {
+            // Check hashed password match
+            if (password_verify($password, $account['password'])) {
                 // Password matches; login the user
                 $userModel = new UserModel();
                 $user = $userModel->find($account['id_user']); // Fetch user details
@@ -76,11 +76,11 @@ class AuthController extends Controller
         $userModel->insert($userData);
         $userId = $userModel->insertID(); // Get last inserted user ID
     
-        // Prepare account data without password hashing
+        // Prepare account data with hashed password
         $accountData = [
             'id_user' => $userId,
             'username' => $this->request->getVar('name'),
-            'password' => $this->request->getVar('password'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), // Hashing password
             'id_role' => "2",
         ];
     
@@ -90,8 +90,8 @@ class AuthController extends Controller
         }
 
         return redirect()->to(base_url('login'));
-
     }
+
     public function dashboard()
     {
         $session = session();

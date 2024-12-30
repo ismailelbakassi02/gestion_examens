@@ -27,10 +27,11 @@ class AccountTable extends Migration
                 'unsigned'       => true,
                 'null'       => false,
             ],
-            'username' => [
+            'email' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 50,
-                'null'       => true,
+                'constraint' => 255,
+                'default'    => '0',
+                'null'       => false,
             ],
             'password' => [
                 'type'       => 'VARCHAR',

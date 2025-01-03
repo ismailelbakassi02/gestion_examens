@@ -3,14 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\AccountModel; // Assuming this model exists and is defined
+use App\Models\AccountModel;
 use CodeIgniter\Controller;
 
 class AuthController extends Controller
 {
     public function login()
     {
-        return view('login'); // Ensure you have a view called login.php
+        return view('login');
     }
 
     public function register()

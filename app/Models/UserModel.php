@@ -6,17 +6,42 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'user'; // Change this if needed
+    
+    /**
+     * The primary key of the table.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id_user';
     
-    protected $allowedFields = ['name', 'date_birth', 'Email','adresse']; // User table fields
+    /**
+     * Allowed fields for insert/update operations.
+     *
+     * @var array
+     */
+    protected $allowedFields = ['name', 'date_birth', 'email', 'adresse']; // Ensure consistent casing
 
-    public function getUserByEmail($email)
+    /**
+     * Fetch a user by their email.
+     *
+     * @param string $email
+     * @return array|null
+     */
+    public function getUserByEmail(string $email): ?array
     {
-        return $this->db->table('account')
-            ->join('user', 'user.id_user = account.id_user')
-            ->where('account.email', $email)
-            ->get()
-            ->getRowArray();
+        $builder = $this->db->table($this->table); // Use the $table property for consistency
+        $builder->join('account', 'user.id_user = account.id_user');
+        $builder->where('account.email', $email);
+        
+        $result = $builder->get()->getRowArray();
+        
+        // Return null if no user is found
+        return $result ?: null;
     }
 }

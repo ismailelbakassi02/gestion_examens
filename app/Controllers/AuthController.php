@@ -26,6 +26,7 @@ class AuthController extends Controller
         // Get the email and password inputs
         $email = $this->request->getVar('text'); // Assuming 'text' is your email input field
         $password = $this->request->getVar('password');
+        
     
         // Retrieve user account by email
         $account = $accountModel->getAccountByEmail($email);
@@ -36,13 +37,13 @@ class AuthController extends Controller
                 // Password matches; login the user
                 $userModel = new UserModel();
                 $user = $userModel->find($account['id_user']); // Fetch user details
-    
+                
                 // Store user information in session
                 $sess_data = [
                     'id_user' => $user['id_user'],
                     'name' => $user['name'],
-                    'email' => $email,
-                    'role' => $account['id_role'], // This could also be null
+                    'email' => $user['email'],
+                    'role' => $account['id_role'],
                     'isLoggedIn' => true,
                 ];
                 $session->set($sess_data);
@@ -98,12 +99,18 @@ class AuthController extends Controller
         if (!$session->get('isLoggedIn')) {
             return redirect()->to(base_url('login')); // Redirect if not logged in
         }
-
+        if ($session->get('role') == 1) {
+            $role_name = 'admin';
+        } elseif ($session->get('role') == 2) {
+            $role_name = 'User';
+        } elseif ($session->get('role') == 3) {
+            $role_name = 'guest';
+        }
         // Pass user data to the dashboard view
         $data = [
             'name' => $session->get('name'),
             'email' => $session->get('email'),
-            'role' => $session->get('role'),
+            'role' => $role_name,
         ];
 
         return view('dashboard', $data);

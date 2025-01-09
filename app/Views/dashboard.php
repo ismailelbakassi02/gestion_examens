@@ -144,7 +144,8 @@
             <h2>User Information</h2>
             <div class="user-info">
                 <p><strong>Name:</strong> <?= $name ?></p>
-                <p><strong>Email:</strong> <?= $email ?></p>
+                <p><strong>Email :</strong> <?= esc($email) ?></p>
+                <!--<p><strong>Email:</strong> < $email ?></p>-->
                 <p><strong>Role:</strong> <?= $role ? $role : 'Not Assigned' ?></p>
             </div>
             <a href="<?= base_url('logout') ?>" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>

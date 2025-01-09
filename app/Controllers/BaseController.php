@@ -35,15 +35,21 @@ abstract class BaseController extends Controller
      *
      * @var list<string>
      */
-    protected $helpers = [];
+    protected $helpers = ['url', 'form'];
 
     /**
-     * Be sure to declare properties for any property fetch you initialized.
-     * The creation of dynamic property is deprecated in PHP 8.2.
+     * Session instance
+     *
+     * @var \CodeIgniter\Session\Session
      */
-    // protected $session;
+    protected $session;
 
     /**
+     * Initialize the controller with the necessary services.
+     *
+     * @param RequestInterface $request
+     * @param ResponseInterface $response
+     * @param LoggerInterface $logger
      * @return void
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
@@ -51,8 +57,7 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = \Config\Services::session();
+        // Preload any models, libraries, etc., here.
+        $this->session = \Config\Services::session();
     }
 }

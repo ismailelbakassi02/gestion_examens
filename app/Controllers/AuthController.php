@@ -3,14 +3,29 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\AccountModel;
+use App\Models\AccountModel; // Assuming this model exists and is defined
 use CodeIgniter\Controller;
 
 class AuthController extends Controller
 {
+    private static $userModelInstance = null;
+
+    // Fonction singleton pour obtenir une instance unique de UserModel
+    private static function getUserModel()
+    {
+        // Si l'instance n'existe pas encore, la créer
+        if (self::$userModelInstance === null) {
+            self::$userModelInstance = new UserModel();
+        }
+
+        // Retourner l'instance unique
+        return self::$userModelInstance;
+    }
+
+
     public function login()
     {
-        return view('login');
+        return view('login'); // Ensure you have a view called login.php
     }
 
     public function register()
@@ -44,6 +59,8 @@ class AuthController extends Controller
                     'name' => $user['name'],
                     'email' => $user['email'],
                     'role' => $account['id_role'],
+                    'date_birth' => $user['date_birth'],
+                    'adresse' => $user['adresse'],
                     'isLoggedIn' => true,
                 ];
                 $session->set($sess_data);
@@ -69,13 +86,13 @@ class AuthController extends Controller
         $userData = [
             'name' => $this->request->getVar('name'),
             'date_birth' => $this->request->getVar('date_birth'),
-            'Email' => $this->request->getVar('email'),
+            'email' => $this->request->getVar('email'),
             'adresse' => $this->request->getVar('adresse'),
         ];
     
         // Insert user data into user table
         $userModel->insert($userData);
-        $userId = $userModel->insertID(); // Get last inserted user ID
+        $userId = $userModel->insertID();
     
         // Prepare account data with hashed password
         $accountData = [
@@ -100,11 +117,11 @@ class AuthController extends Controller
             return redirect()->to(base_url('login')); // Redirect if not logged in
         }
         if ($session->get('role') == 1) {
-            $role_name = 'admin';
+            $role_name = 'Admin';
         } elseif ($session->get('role') == 2) {
-            $role_name = 'User';
+            $role_name = 'Etudiant';
         } elseif ($session->get('role') == 3) {
-            $role_name = 'guest';
+            $role_name = 'Prof';
         }
         // Pass user data to the dashboard view
         $data = [
@@ -121,5 +138,46 @@ class AuthController extends Controller
         $session = session();
         $session->destroy();
         return redirect()->to(base_url('login'));
+    }
+    public function profileE()
+    {
+        // Obtenir l'instance unique de UserModel via la fonction singleton
+        $userModel = self::getUserModel();
+
+        // Appeler la méthode profileE() du modèle
+        $data = $userModel->profileE();
+
+        // Retourner la vue avec les données
+        return view('profileE', $data);
+    }
+    public function E_update()
+    {
+        $session = session();
+        if (!$session->get('isLoggedIn')) {
+            return redirect()->to(base_url('login'));
+        }
+
+        $userModel = self::getUserModel();
+        $data = [
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'adresse' => $this->request->getPost('address'),
+            'date_birth' => $this->request->getPost('date_birth')
+        ];
+        $accountData = [
+            'username' => $this->request->getPost('name'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
+        ];
+
+        if ($userModel->E_update($session->get('id_user'), $data,$accountData)) {
+            
+            $session->set([
+                'name' => $this->request->getPost('name'),
+                'email' => $this->request->getPost('email'),
+                'date_birth' => $this->request->getPost('date_birth'),
+                'adresse' => $this->request->getPost('address'),
+            ]);
+            return redirect()->to(base_url('profileE'));
+        }
     }
 }

@@ -44,4 +44,41 @@ class UserModel extends Model
         // Return null if no user is found
         return $result ?: null;
     }
+    public function profileE()
+    {
+        $session = session();
+        if (!$session->get('isLoggedIn')) {
+            return redirect()->to(base_url('login')); // Redirect if not logged in
+        }
+        if ($session->get('role') == 1) {
+            $role_name = 'Admin';
+        } elseif ($session->get('role') == 2) {
+            $role_name = 'Etudiant';
+        } elseif ($session->get('role') == 3) {
+            $role_name = 'Prof';
+        }
+        return [
+            'name' => $session->get('name'),
+            'email' => $session->get('email'),
+            'adresse' => $session->get('adresse'),
+            'date_birth' => $session->get('date_birth'),
+            'role' => $role_name,
+        ];
+    }
+    public function E_update($userId, array $data, array $accountData)
+    {
+        $accountModel = new AccountModel();
+
+        $user = $this->find($userId);
+        if (!$user) {
+            return false;
+        }
+        if($this->update($userId, $data) && $accountModel->where('id_user', $userId)->set($accountData)->update()){
+        // $this->update($userId, $data);
+        // $accountModel->where('id_user', $userId)->set($accountData)->update();
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

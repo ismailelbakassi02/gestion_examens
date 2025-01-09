@@ -149,6 +149,10 @@
                 <p><strong>Role:</strong> <?= $role ? $role : 'Not Assigned' ?></p>
             </div>
             <a href="<?= base_url('logout') ?>" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            
+            <a href="<?= base_url('profileE') ?>" class="logout"> Profile</a>
+
+
         </div>
     </div>
 </body>

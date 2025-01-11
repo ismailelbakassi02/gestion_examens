@@ -78,7 +78,6 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     color: var(--text-dark);
-    text-decoration: none;
 }
 
 .nav-item i {

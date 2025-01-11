@@ -25,7 +25,7 @@ class UserModel extends Model
      *
      * @var array
      */
-    protected $allowedFields = ['name', 'date_birth', 'email', 'adresse']; // Ensure consistent casing
+    protected $allowedFields = ['name', 'date_birth', 'email', 'adresse']; 
 
     /**
      * Fetch a user by their email.
@@ -35,13 +35,17 @@ class UserModel extends Model
      */
     public function getUserByEmail(string $email): ?array
     {
-        $builder = $this->db->table($this->table); // Use the $table property for consistency
+        $builder = $this->db->table($this->table); 
         $builder->join('account', 'user.id_user = account.id_user');
         $builder->where('account.email', $email);
         
         $result = $builder->get()->getRowArray();
         
-        // Return null if no user is found
+      
         return $result ?: null;
+    }
+    public function getUserById($id)
+    {
+        return $this->where('id_user', $id)->first();
     }
 }

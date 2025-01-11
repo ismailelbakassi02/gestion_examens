@@ -82,7 +82,7 @@ class AuthController extends Controller
             'id_user' => $userId,
             'username' => $this->request->getVar('name'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), // Hashing password
-            'id_role' => "2",
+            'id_role' => "3",
         ];
     
         // Insert account data into account table
@@ -102,15 +102,16 @@ class AuthController extends Controller
         if ($session->get('role') == 1) {
             $role_name = 'admin';
         } elseif ($session->get('role') == 2) {
-            $role_name = 'User';
+            $role_name = 'Prof';
         } elseif ($session->get('role') == 3) {
-            $role_name = 'guest';
+            $role_name = 'Etudiant';
         }
         // Pass user data to the dashboard view
         $data = [
             'name' => $session->get('name'),
             'email' => $session->get('email'),
             'role' => $role_name,
+            'id'=>$session->get('id_user')
         ];
 
         return view('dashboard', $data);

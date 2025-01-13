@@ -318,3 +318,103 @@ INFO - 2025-01-13 22:17:44 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2025-01-13 22:17:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-01-13 22:17:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-01-13 22:17:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:26:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:30:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-13 22:30:31 --> ErrorException: Undefined variable $note
+[Method: GET, Route: notes/student/2]
+in APPPATH\Views\note.php on line 127.
+ 1 APPPATH\Views\note.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $note', 'C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php', 127)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('note', [], true)
+ 5 APPPATH\Controllers\NoteController.php(72): view('note', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NoteController->showByStudent('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NoteController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-13 22:30:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:30:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-13 22:30:35 --> ErrorException: Undefined variable $note
+[Method: GET, Route: notes/student/2]
+in APPPATH\Views\note.php on line 127.
+ 1 APPPATH\Views\note.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $note', 'C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php', 127)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('note', [], true)
+ 5 APPPATH\Controllers\NoteController.php(72): view('note', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NoteController->showByStudent('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NoteController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-13 22:30:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-13 22:30:46 --> ErrorException: Undefined variable $note
+[Method: GET, Route: notes/student/2]
+in APPPATH\Views\note.php on line 127.
+ 1 APPPATH\Views\note.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $note', 'C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php', 127)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('note', [], true)
+ 5 APPPATH\Controllers\NoteController.php(72): view('note', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NoteController->showByStudent('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NoteController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-13 22:31:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-13 22:31:20 --> ErrorException: Undefined variable $note
+[Method: GET, Route: notes/student/2]
+in APPPATH\Views\note.php on line 127.
+ 1 APPPATH\Views\note.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $note', 'C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php', 127)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('note', [], true)
+ 5 APPPATH\Controllers\NoteController.php(72): view('note', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NoteController->showByStudent('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NoteController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-13 22:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-13 22:31:31 --> ErrorException: Undefined variable $note_general
+[Method: GET, Route: notes/student/2]
+in APPPATH\Views\note.php on line 128.
+ 1 APPPATH\Views\note.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $note_general', 'C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php', 128)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('note', [], true)
+ 5 APPPATH\Controllers\NoteController.php(72): view('note', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NoteController->showByStudent('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NoteController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-13 22:31:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:36:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:36:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:37:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:38:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-13 22:38:40 --> ErrorException: Undefined variable $note
+[Method: GET, Route: notes/student/2]
+in APPPATH\Views\note.php on line 127.
+ 1 APPPATH\Views\note.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $note', 'C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php', 127)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\gestion_examens\\app\\Views\\note.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('note', [], true)
+ 5 APPPATH\Controllers\NoteController.php(72): view('note', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NoteController->showByStudent('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NoteController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-13 22:40:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:40:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:40:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-13 22:41:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

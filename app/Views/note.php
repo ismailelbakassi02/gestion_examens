@@ -118,6 +118,18 @@
                         </div>
                     </div>
                     <div class="grades-list">
+                    <div class="grade-item">
+    <div class="grade-info">
+        <div class="note-display align-text">
+            <div class="note-value">
+                <?= number_format($note_generale, 2) ?>
+            </div>
+            <small class="note-label">Note Générale</small>
+        </div>
+    </div>
+   
+</div>
+                        
                     <?php foreach ($notes as $note): ?>
                         <div class="grade-item">
                             <div class="grade-info">

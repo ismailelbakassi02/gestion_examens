@@ -67,7 +67,9 @@ class NoteController extends BaseController
             $totalNotes+=$note->note;
             $noteCount++;
         }
-        $data["note_generale"]=$noteCount > 0 ? $totalNotes / $noteCount : 0;
+        $note_G=$noteCount > 0 ? $totalNotes / $noteCount : 0;
+        $session ->set(['note_generale'=>$note_G]);
+        $data["note_generale"]=$note_G;
 
         return view('note', $data); 
     }

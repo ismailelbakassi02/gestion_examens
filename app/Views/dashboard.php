@@ -1,160 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Resetting global styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Dashboard container */
-        .dashboard-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 30px;
-            background: linear-gradient(135deg, #ffffff, #f1f5f9);
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Header Section */
-        .header {
-            background-color: #27ae60; /* Vert Fatih Jidan */
-            color: white;
-            padding: 50px 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .header h1 {
-            font-size: 3em;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .header p {
-            font-size: 1.2em;
-            font-weight: 300;
-            margin-top: 10px;
-        }
-
-        /* Content section */
-        .content {
-            padding: 30px 40px;
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-top: -20px;
-        }
-
-        .content h2 {
-            font-size: 2em;
-            color: #27ae60;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #27ae60;
-            padding-bottom: 10px;
-        }
-
-        .user-info {
-            padding: 20px;
-            background-color: #fafafa;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
-        }
-
-        .user-info p {
-            font-size: 1.1em;
-            margin: 15px 0;
-            color: #555;
-        }
-
-        .user-info strong {
-            color: #333;
-        }
-
-        /* Logout Button */
-        .logout {
-            display: inline-flex;
-            align-items: center;
-            padding: 14px 30px;
-            background-color: #e74c3c;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 6px 12px rgba(231, 76, 60, 0.2);
-            transition: background-color 0.3s, transform 0.2s ease;
-        }
-
-        .logout:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-        }
-
-        .logout i {
-            margin-right: 8px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2em;
-            }
-            
-            .content h2 {
-                font-size: 1.8em;
-            }
-            
-            .user-info {
-                padding: 15px;
-            }
-
-            .logout {
-                font-size: 1em;
-                padding: 10px 25px;
-            }
-        }
-
-    </style>
+    <title>Espace Étudiant - Dashboard Moderne</title>
+    <!-- Lien vers le fichier CSS -->
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+<style>
+    .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #555;
+    }
+
+    .nav-item i {
+        margin-right: 10px;
+    }
+
+    .nav-item.active {
+        background-color: #4f46e5;
+        color: white;
+    }
+
+    .nav-item:hover {
+        background-color: #e0e0e0;
+    }
+
+    .nav-item a {
+        color: inherit;
+        /* Inherit the color of the nav-item */
+        text-decoration: none;
+        /* Remove the underline */
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 10px 15px;
+        /* Matches the padding of .nav-item */
+        font-size: 16px;
+    }
+
+    .nav-item a:hover {
+        background-color: #e0e0e0;
+    }
+
+    .nav-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+        font-size: 18px;
+        color: #4f46e5;
+    }
+</style>
+
 <body>
-    <div class="dashboard-container">
-        <div class="header">
-            <h1>Welcome to Your Dashboard</h1>
-            <p>Your user account details</p>
-        </div>
-        <div class="content">
-            <h2>User Information</h2>
-            <div class="user-info">
-                <p><strong>Name:</strong> <?= $name ?></p>
-                <p><strong>Email :</strong> <?= esc($email) ?></p>
-                <!--<p><strong>Email:</strong> < $email ?></p>-->
-                <p><strong>Role:</strong> <?= $role ? $role : 'Not Assigned' ?></p>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EspaceÉtudiant</span>
             </div>
-            <a href="<?= base_url('logout') ?>" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            
-            <a href="<?= base_url('profileE') ?>" class="logout"> Profile</a>
 
+            <div class="nav-section">
+                <div class="nav-title">MENU PRINCIPAL</div>
+                <div class="nav-item active">
+                <a href="<?= base_url('dashboard') ?>">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Tableau de bord</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="">
+                        <i class="fas fa-book"></i>
+                        <span>Modules</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                <a href="<?= base_url('profileE') ?>">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </div>
+            </div>
 
+            <div class="nav-section">
+                <div class="nav-title">AUTRES</div>
+                <div class="nav-item">
+                    <a href="<?= base_url('logout') ?>">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Deconnexion</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher..." />
+                </div>
+                <div class="profile">
+                    <div class="profile-info">
+                        <div class="profile-name"><?= $name ?></div>
+                        <div class="profile-role"><?= $role ? $role : 'Non assigné' ?></div>
+                    </div>
+                    <div class="profile-img">MA</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Moyenne Générale</div>
+                    <div class="card-actions">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+                <div class="stat-value"><span>14.5</span> / 20</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Modules avec Note > 10</div>
+                    <div class="card-actions">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-list">
+                    <div class="stat-item">
+                        <span>Mathématiques</span>
+                        <span class="stat-value">18</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Physique</span>
+                        <span class="stat-value">12</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Chimie</span>
+                        <span class="stat-value">11</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
+
+
+
+<div class="dashboard-container">
+    <h2>User Information</h2>
+    <div class="user-info">
+        <p><strong>Name:</strong> <?= $name ?></p>
+        <p><strong>Email:</strong> <?= esc($email) ?></p>
+        <p><strong>Role:</strong> <?= $role ? $role : 'Not Assigned' ?></p>
+    </div>
+    <a href="<?= base_url('logout') ?>" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <a href="<?= base_url('profileE') ?>" class="profile-link"><i class="fas fa-user"></i> Profile</a>
+    <?php if ($role === 'Etudiant'): ?>
+        <a href="<?= base_url('note') ?>" class="profile-link">Notes</a>
+    <?php endif; ?>
+</div>

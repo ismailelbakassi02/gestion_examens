@@ -64,7 +64,8 @@ class AuthController extends Controller
                     'isLoggedIn' => true,
                 ];
                 $session->set($sess_data);
-                return redirect()->to('/dashboard'); // Redirect to dashboard
+                return redirect()->to(base_url('dashboard'));
+ // Redirect to dashboard
             } else {
                 // Password is incorrect
                 $session->setFlashdata('error', 'Incorrect password');

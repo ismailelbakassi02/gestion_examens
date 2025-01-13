@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\NoteModel;
 use CodeIgniter\Controller;
 use App\Models\ModuleModel;
+use App\Models\UserModel;
 
 class NoteController extends BaseController
 {
@@ -33,7 +34,9 @@ class NoteController extends BaseController
        
         $noteModel = new NoteModel();
         $moduleModel = new ModuleModel();
-
+        $userModel=new UserModel();
+        $session= session();
+        $data["name"]=$session->get('name');
         $data['notes'] = $noteModel->getNotesByStudent($id_etudiant);
 
         $totalNotes = 0;
@@ -43,9 +46,19 @@ class NoteController extends BaseController
         foreach ($data['notes'] as &$note) {
 
             $module = $moduleModel->getModuleName($note->id_module);
+            
+            
 
             if ($module) {
                 $note->module_name = $module->nom_module;
+                $prof_id=$module->id_user;
+                $prof= $userModel->getUserById($prof_id);
+                
+                if ($prof) {
+                    $note->prof_name = $prof->name;
+                } else {
+                    $note->prof_name = 'Unknown Professor';
+                }
             } else {
                 $note->module_name = 'Unknown Module';
             }

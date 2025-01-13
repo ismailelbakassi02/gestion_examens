@@ -45,7 +45,11 @@ class UserModel extends Model
         return $result ?: null;
     }
     public function getUserById($id)
-    {
-        return $this->where('id_user', $id)->first();
-    }
+{
+    return $this->db->table('user')
+        ->where('id_user', $id)
+        ->get()
+        ->getRow(); // Returns an object
+}
+    
 }

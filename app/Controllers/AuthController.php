@@ -64,7 +64,8 @@ class AuthController extends Controller
                     'isLoggedIn' => true,
                 ];
                 $session->set($sess_data);
-                return redirect()->to(base_url('dashboard'));
+                //return redirect()->to(base_url('dashboard'));
+                return redirect()->to(base_url('notes/student/'.$user['id_user']));
  // Redirect to dashboard
             } else {
                 // Password is incorrect
@@ -100,7 +101,7 @@ class AuthController extends Controller
             'id_user' => $userId,
             'username' => $this->request->getVar('name'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), // Hashing password
-            'id_role' => "2",
+            'id_role' => "3",
         ];
     
         // Insert account data into account table
@@ -129,6 +130,8 @@ class AuthController extends Controller
             'name' => $session->get('name'),
             'email' => $session->get('email'),
             'role' => $role_name,
+            'id'=>$session->get('id_user'),
+            'note_general'=> $session->get('note_generale'),
         ];
 
         return view('dashboard', $data);

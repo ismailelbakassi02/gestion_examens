@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-
+<?php $session=session() ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,7 +74,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="">
+                    <a href="<?= base_url('notes/student/'.$id) ?>">
                         <i class="fas fa-book"></i>
                         <span>Modules</span>
                     </a>
@@ -120,31 +120,10 @@
                         <i class="fas fa-chart-line"></i>
                     </div>
                 </div>
-                <div class="stat-value"><span>14.5</span> / 20</div>
+                <div class="stat-value"><span><?= number_format($note_general, 2) ?></span> / 20</div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Modules avec Note > 10</div>
-                    <div class="card-actions">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                </div>
-                <div class="stat-list">
-                    <div class="stat-item">
-                        <span>Mathématiques</span>
-                        <span class="stat-value">18</span>
-                    </div>
-                    <div class="stat-item">
-                        <span>Physique</span>
-                        <span class="stat-value">12</span>
-                    </div>
-                    <div class="stat-item">
-                        <span>Chimie</span>
-                        <span class="stat-value">11</span>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </body>

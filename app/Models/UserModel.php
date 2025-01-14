@@ -62,6 +62,7 @@ class UserModel extends Model
             'email' => $session->get('email'),
             'adresse' => $session->get('adresse'),
             'date_birth' => $session->get('date_birth'),
+            'id'=>$session->get('id_user'),
             'role' => $role_name,
         ];
     }
@@ -80,5 +81,12 @@ class UserModel extends Model
         }else {
             return false;
         }
+    }
+    public function getUserById($id)
+    {
+        return $this->db->table('user')
+            ->where('id_user', $id)
+            ->get()
+            ->getRow(); // Returns an object
     }
 }

@@ -16,3 +16,5 @@ $routes->get('/dashboard', 'AuthController::dashboard');
 $routes->get('/logout', 'AuthController::logout');
 $routes->get('/profileE', 'AuthController::profileE');
 $routes->post('/profileE/update', 'AuthController::E_update');
+$routes->get('/notes', 'NoteController::index');
+$routes->get('/notes/student/(:num)', 'NoteController::showByStudent/$1');

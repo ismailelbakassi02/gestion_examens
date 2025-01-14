@@ -72,7 +72,7 @@
                 </a>
             </div>
             <div class="nav-item">
-                <a href="<?= base_url('note') ?>">
+            <a href="<?= base_url('notes/student/'.$id) ?>">
                     <i class="fas fa-book"></i>
                     <span>Modules</span>
                 </a>

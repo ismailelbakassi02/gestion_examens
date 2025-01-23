@@ -73,4 +73,13 @@ class NoteController extends BaseController
 
         return view('note', $data); 
     }
+    public function getModuleProf(){
+        $session = Session();
+        $id = $session->get('id_user');
+        $moduleModel = new ModuleModel();
+        $modules = $moduleModel->where('id_user', $id)->findAll();
+
+        return view('note', ['modules' => $modules,'name' => $session->get('name')]);
+    }
+    
 }

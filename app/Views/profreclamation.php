@@ -90,51 +90,6 @@ if ($session->get('role') == 1) {
     .new-note {
         display: none;
     }
-
-    .badge-custom-yellow {
-        background-color: #ffc107;
-        /* Jaune */
-        color: #000;
-        /* Texte noir */
-        border: 1px solid #e0a800;
-        /* Bordure jaune plus foncée */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        /* Ombre légère */
-        padding: 5px 10px;
-        /* Espacement interne */
-        border-radius: 12px;
-        /* Coins arrondis */
-    }
-
-    .badge-custom-green {
-        background-color: #28a745;
-        /* Vert */
-        color: #fff;
-        /* Texte blanc */
-        border: 1px solid #218838;
-        /* Bordure verte plus foncée */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        /* Ombre légère */
-        padding: 5px 10px;
-        /* Espacement interne */
-        border-radius: 12px;
-        /* Coins arrondis */
-    }
-
-    .badge-custom-red {
-        background-color: #dc3545;
-        /* Rouge */
-        color: #fff;
-        /* Texte blanc */
-        border: 1px solid #c82333;
-        /* Bordure rouge plus foncée */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        /* Ombre légère */
-        padding: 5px 10px;
-        /* Espacement interne */
-        border-radius: 12px;
-        /* Coins arrondis */
-    }
 </style>
 
 <body>
@@ -163,14 +118,6 @@ if ($session->get('role') == 1) {
                         <span>Tableau de bord</span>
                     </a>
                 </div>
-                <?php if ($session->get('role') == 2): ?>
-                    <div class="nav-item">
-                        <a href="<?= base_url('notes/student/' . $session->get(key: 'id_user')) ?>">
-                            <i class="fas fa-book"></i>
-                            <span>Modules</span>
-                        </a>
-                    </div>
-                <?php endif; ?>
                 <?php if ($session->get('role') == 3): ?>
                     <div class="nav-item">
                         <a href="<?= base_url('notes/profModules') ?>">
@@ -180,21 +127,21 @@ if ($session->get('role') == 1) {
                     </div>
                 <?php endif; ?>
                 <?php if ($session->get('role') == 2): ?>
-                    <div class="nav-item  active">
+                    <div class="nav-item">
                         <a href=<?= base_url('reclamation') ?>>
                             <i class="fas fa-book"></i>
                             <span>Votre Réclamations</span>
                         </a>
                     </div>
                 <?php endif; ?>
-                <?php if ($session->get('role') == 3): ?>
-                    <div class="nav-item">
-                        <a href="<?= base_url('profReclamation') ?>">
-                            <i class="fas fa-book"></i>
-                            <span>Réclamation</span>
-                        </a>
-                    </div>
-                <?php endif; ?>
+
+                <div class="nav-item active">
+                    <a href="">
+                        <i class="fas fa-book"></i>
+                        <span>Réclamation</span>
+                    </a>
+                </div>
+
                 <div class="nav-item">
                     <a href="<?= base_url('profileE') ?>">
                         <i class="fas fa-user"></i>
@@ -222,60 +169,86 @@ if ($session->get('role') == 1) {
                 </div>
                 <div class="profile">
                     <div class="profile-info">
-                        <div class="profile-name"><?= $session->get(key: 'name') ?></div>
+                        <div class="profile-name"><?= $session->get('name') ?></div>
                         <div class="profile-role"><?= $role_name ?></div>
                     </div>
                     <div class="profile-img">MA</div>
                 </div>
             </div>
-            <?php if ($session->get('role') == 2): ?>
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Mes Réclamations</div>
-                        <div class="card-actions">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Réclamation</div>
+                    <div class="card-actions">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="grades-list">
-                        <table class="table table-bordered table-striped">
+                </div>
+                <div class="grades-list">
+                    <?php if (!empty($reclamations)): ?>
+                        <table>
                             <thead>
                                 <tr>
-                                    <th scope="col">Module Name</th>
-                                    <th scope="col">Commentaire</th>
-                                    <th scope="col">Status</th>
+                                    <th>Étudiant</th>
+                                    <th>Module</th>
+                                    <th>Note</th>
+                                    <th>Commentaire</th>
+                                    <th>État</th>
+                                    <th>Action</th>
+                                    <th>Nouvelle Note</th> <!-- Colonne toujours affichée -->
+                                    <th>Traiter</th> <!-- Nouvelle colonne pour le traitement -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if (!empty($reclamations)): ?>
-                                    <?php foreach ($reclamations as $reclamation): ?>
-                                        <tr>
-                                            <td><?= $reclamation['module_name'] ?></td>
-                                            <td><?= esc($reclamation["commentaire"]) ?></td>
-                                            <td>
-                                                <?php if ($reclamation['etat'] == 'En attent'): ?>
-                                                    <span class="badge badge-custom-yellow">En Attent</span>
-                                                <?php elseif ($reclamation['etat'] == 'Accepter'): ?>
-                                                    <span class="badge badge-custom-green">Accepter</span>
-                                                <?php else: ?>
-                                                    <span class="badge badge-custom-red">Réfuser</span>
-                                                <?php endif; ?>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
-                                    <tr>
-                                        <td colspan="3" class="text-center">No reclamations found</td>
+                                <?php foreach ($reclamations as $reclamation): ?>
+                                    <tr id="row-<?= $reclamation['id_reclamation'] ?>">
+                                        <td><?= $reclamation['user_name'] ?></td>
+                                        <td><?= $reclamation['nom_module'] ?></td>
+                                        <td><?= $reclamation['note_value'] ?></td>
+                                        <td><?= $reclamation['commentaire'] ?></td>
+                                        <td><?= $reclamation['etat'] ?></td>
+                                        <td>
+                                            <!-- Menu déroulant pour Accepter ou Refuser -->
+                                            <form action="<?= site_url('profReclamation/traiter') ?>" method="post">
+                                                <input type="hidden" name="id_reclamation" value="<?= $reclamation['id_reclamation'] ?>">
+                                                    <input type="hidden" name="id_note" value="<?= $reclamation['id_note'] ?>">
+                                                <select name="etat">
+                                                    <option value="accepter">Accepter</option>
+                                                    <option value="refuser">Refuser</option>
+                                                </select>
+                                        </td>
+                                        <td>
+                                            <!-- Champ d'entrée pour la nouvelle note (toujours affiché) -->
+                                            <input type="number" name="new_note" placeholder="Nouvelle note">
+                                        </td>
+                                        <td>
+                                            <!-- Bouton pour soumettre le formulaire -->
+                                            <button type="submit">Traiter</button>
+                                            </form>
+                                        </td>
                                     </tr>
-                                <?php endif; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
-                    </div>
-
+                    <?php else: ?>
+                        <p>Aucune réclamation trouvée.</p>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+            </div>
+
 
         </div>
     </div>
 </body>
 
 </html>
+
+
+
+<div class="grade-item">
+    <div class="grade-info">
+        <div>
+            <div></div>
+        </div>
+
+    </div>
+</div>

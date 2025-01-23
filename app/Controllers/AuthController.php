@@ -64,8 +64,11 @@ class AuthController extends Controller
                     'isLoggedIn' => true,
                 ];
                 $session->set($sess_data);
-                //return redirect()->to(base_url('dashboard'));
-                return redirect()->to(base_url('notes/student/'.$user['id_user']));
+                if ($account['id_role'] == 2){
+                    return redirect()->to(base_url('notes/student/'.$user['id_user']));
+                }else{
+                    return redirect()->to(base_url('dashboard'));
+                }
  // Redirect to dashboard
             } else {
                 // Password is incorrect
@@ -101,7 +104,7 @@ class AuthController extends Controller
             'id_user' => $userId,
             'username' => $this->request->getVar('name'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), // Hashing password
-            'id_role' => "3",
+            'id_role' => "2",
         ];
     
         // Insert account data into account table

@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php $session=session() ?>
+<?php
+$session = session();
+if ($session->get('role') == 1) {
+    $role_name = 'Admin';
+} elseif ($session->get('role') == 2) {
+    $role_name = 'Etudiant';
+} elseif ($session->get('role') == 3) {
+    $role_name = 'Prof';
+}
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,18 +92,38 @@
                         <span>Tableau de bord</span>
                     </a>
                 </div>
+                <?php if ($session->get('role') == 2): ?>
                 <div class="nav-item">
                     <a href="<?= base_url('notes/student/'.$id) ?>">
                         <i class="fas fa-book"></i>
                         <span>Modules</span>
                     </a>
                 </div>
+                <?php endif; ?>
+                <?php if ($session->get('role') == 3): ?>
+                <div class="nav-item">
+                    <a href="<?= base_url('notes/profModules') ?>">
+                        <i class="fas fa-book"></i>
+                        <span>Modules</span>
+                    </a>
+                </div>
+                <?php endif; ?>
+                <?php if ($session->get('role') == 2): ?>
                 <div class="nav-item">
                     <a href=<?= base_url('reclamation') ?>>
                         <i class="fas fa-book"></i>
                         <span>Votre Réclamations</span>
                     </a>
                 </div>
+                <?php endif; ?>
+                <?php if ($session->get('role') == 3): ?>
+                <div class="nav-item">
+                    <a href="<?= base_url('profReclamation') ?>">
+                        <i class="fas fa-book"></i>
+                        <span>Réclamation</span>
+                    </a>
+                </div>
+                <?php endif; ?>
                 <div class="nav-item">
                 <a href="<?= base_url('profileE') ?>">
                         <i class="fas fa-user"></i>
@@ -128,7 +157,7 @@
                     <div class="profile-img">MA</div>
                 </div>
             </div>
-
+            <?php if ($session->get('role') == 2): ?>
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">Moyenne Générale</div>
@@ -138,7 +167,7 @@
                 </div>
                 <div class="stat-value"><span><?= number_format($note_general, 2) ?></span> / 20</div>
             </div>
-
+            <?php endif; ?>
             
         </div>
     </div>

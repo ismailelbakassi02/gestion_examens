@@ -64,6 +64,16 @@
                 <i class="fas fa-graduation-cap"></i>
                 <span>EspaceÉtudiant</span>
             </div>
+            <!-- Display success or error message from query parameters -->
+            <?php if (isset($_GET['message'])): ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= htmlspecialchars($_GET['message'], ENT_QUOTES, 'UTF-8') ?>
+                    </div>
+                <?php elseif (isset($_GET['error'])): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= htmlspecialchars($_GET['error'], ENT_QUOTES, 'UTF-8') ?>
+                    </div>
+                <?php endif; ?>
 
             <div class="nav-section">
                 <div class="nav-title">MENU PRINCIPAL</div>
@@ -77,6 +87,12 @@
                     <a href="<?= base_url('notes/student/'.$id) ?>">
                         <i class="fas fa-book"></i>
                         <span>Modules</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href=<?= base_url('reclamation') ?>>
+                        <i class="fas fa-book"></i>
+                        <span>Votre Réclamations</span>
                     </a>
                 </div>
                 <div class="nav-item">

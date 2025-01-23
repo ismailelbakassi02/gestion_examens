@@ -12,7 +12,9 @@ class NoteModel extends Model
     protected $primaryKey = 'id_note';
 
     protected $allowedFields = ['note', 'id_etudiant', 'id_matiere'];
+    // protected $returnType     = Note::class;
     protected $returnType     = Note::class;
+
 
 
     public function getAllNotes() {
@@ -32,6 +34,9 @@ class NoteModel extends Model
     public function getNoteByStudentSubject($id_etudiant, $id_matiere){
         return $this->where(['id_user' => $id_etudiant, 'id_matiere' => $id_matiere])->findAll();
     }
-    
-    
+    public function getNoteById($id_note){
+        return $this->where('id_note', $id_note)->asArray()->first();
+    }
+
+ 
 }

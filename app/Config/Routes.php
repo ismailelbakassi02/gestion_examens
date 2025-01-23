@@ -18,3 +18,10 @@ $routes->get('/profileE', 'AuthController::profileE');
 $routes->post('/profileE/update', 'AuthController::E_update');
 $routes->get('/notes', 'NoteController::index');
 $routes->get('/notes/student/(:num)', 'NoteController::showByStudent/$1');
+$routes->get('/reclamation/student/(:num)/(:num)','ReclamationController::reclamer/$1/$2');
+$routes->post('reclamation/student/reclamer', 'ReclamationController::store');
+$routes->get('reclamation', 'ReclamationController::index');
+
+
+
+

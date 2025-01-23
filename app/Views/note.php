@@ -141,7 +141,8 @@
                                     <small class="text-light"><?= $note->prof_name ?></small>
                                 </div>
                             </div>
-                            <div class="grade-value grade-excellent"><?= $note->note ?></div>
+                            <div class="grade-value grade-excellent"><?= number_format( $note->note,2 )?></div>
+                            <div class="grade-value grade-excellent"><a href=<?= base_url('reclamation/student/'.$note->id_user.'/'.$note->id_note.'')?>>Réclamer</a></div>
                         </div>
                         <?php endforeach; ?>
                         </div>
